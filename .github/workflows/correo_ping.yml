@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.SMTP_USERNAME }}
         password: ${{ secrets.SMTP_PASSWORD }}
         
-        subject: ${{ env.subject }}
+        subject: "Cambios en la rama ${{ github.ref_name }}"
         body: "Se realizaron cambios en la rama ${{ github.ref_name }}."
         to: "${{ secrets.EMAIL_USERNAME }}"
         from: "${{ secrets.EMAIL_USERNAME }}"
