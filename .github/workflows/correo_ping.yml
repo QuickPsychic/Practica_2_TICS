@@ -22,5 +22,5 @@ jobs:
         
         subject: "Cambios en la rama ${{ github.ref_name }}"
         body: "Se realizaron cambios en la rama ${{ github.ref_name }}."
-        to: "${{ secrets.EMAIL_USERNAME }}"
-        from: "${{ secrets.EMAIL_USERNAME }}"
+        to: "${{ secrets.SMTP_USERNAME }}"
+        from: "${{ secrets.SMTP_USERNAME }}"
