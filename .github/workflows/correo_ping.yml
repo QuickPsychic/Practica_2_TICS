@@ -1,6 +1,5 @@
-name: Send Notification Email
+name: Enviar notificación por correo
 
-# cambio en branches main, feature_a o feature_b
 on:
   push:
     branches:
@@ -9,20 +8,22 @@ on:
       - feature_b
 
 jobs:
-  email_notification:
+  send_email:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Send Email Notification
-        uses: dawidd6/action-send-mail@v3
-        with:
-          # Configuración del servidor SMTP
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.SMTP_USERNAME   }}
-          password: ${{ secrets.SMTP_PASSWORD  }}
-          
-          # Configuración del correo
-          subject: "Cambios en la rama ${{ github.ref_name }}"
-          body: "Se han subido cambios a la rama ${{ github.ref_name }} del repositorio."
-          to: "${{ secrets.SMTP_USERNAME  }}"
-          from: "${{ secrets.SMTP_USERNAME  }}"
+    - name: Enviar correo
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.SMTP_USERNAME }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        
+        subject: "Cambios en la rama ${{ github.ref_name }}"
+        body: "Se realizaron cambios en la rama ${{ github.ref_name }}."
+        to: "${{ secrets.SMTP_USERNAME }}"
+        from: "${{ secrets.SMTP_USERNAME }}"
+
+
+
